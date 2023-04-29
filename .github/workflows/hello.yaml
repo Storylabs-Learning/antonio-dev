@@ -18,4 +18,4 @@ jobs:
         run: echo "Hello world,   ${{ env.TEXT }}"
 
       - name: print-secret
-        run: echo "Secret value:   ${{ secrets.SECRET_NAME }}"
+        run: echo "Secret value   ${{ secrets.SECRET_NAME }}"
