@@ -92,9 +92,7 @@ jobs:
           git config --local user.name "Storylabs deploy-bot"
 
           git add .
-
-          
-          git commit -am "New image version. Branch staging. tag: ${{ env.VERSION }}"
+          git diff-index --quiet HEAD || git commit -am "New image version. Branch staging. tag: ${{ env.VERSION }}"
           git push --force origin ${{ env.OPS_BRANCH }}
 
       
