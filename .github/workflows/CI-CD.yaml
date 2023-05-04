@@ -71,6 +71,10 @@ jobs:
 
       - name: update Kubernetes resource
         run: |
+          echo ${{ env.RELEASE_VERSION }}
+          echo version tag
+          echo ${{ env.VERSION }}
+
           cd public-api/overlays/stage
           kustomize edit set image KUSTOMIZE-DEFINED=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
 
