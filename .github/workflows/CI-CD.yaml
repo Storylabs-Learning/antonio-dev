@@ -1,6 +1,7 @@
 name: Docker image
 
 # trigger
+
 on:
   push:
     branches: ["stage"]
