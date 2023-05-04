@@ -35,7 +35,8 @@ jobs:
           echo ${{ env.RELEASE_VERSION }}
               
           
-          echo "::set-output name=RELEASE_VERSION::${{ env.RELEASE_VERSION }}"
+          echo "{RELEASE_VERSION}={value}" >> $GITHUB_OUTPUT
+
           
       
       - name: Login to Dockerhub
