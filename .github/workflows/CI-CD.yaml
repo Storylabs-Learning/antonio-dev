@@ -59,6 +59,11 @@ jobs:
       VERSION: ${{ needs.build.outputs.RELEASE_VERSION }}
     
     steps:
+      - name: Show new tag
+        id: tagVersion
+        run: |
+          echo ${{ env.VERSION }}
+
       - name: Checkout OPS code
         uses: actions/checkout@v3
         with:
