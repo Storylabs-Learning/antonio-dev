@@ -10,7 +10,7 @@ env:
   REGISTRY: cachac
   IMAGE_NAME: kubelabs_publicapi
   OPS_BRANCH: main
-  OPS_REPO: cachac/antonio-ops
+  OPS_REPO: Storylabs-Learning/antonio-ops
   
 
 jobs: 
@@ -33,7 +33,7 @@ jobs:
         id: tagVersion
         run: |
           echo ${{ env.RELEASE_VERSION }}
-          echo "::set-output name=RELEASE_VERSION::${{ env.RELEASE_VERSION }}"
+          echo "::save-state name=RELEASE_VERSION::${{ env.RELEASE_VERSION }}"
       
       
       - name: Login to Dockerhub
