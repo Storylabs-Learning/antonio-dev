@@ -3,7 +3,7 @@ name: hello-world
 # trigger
 on:
   push:
-    branches: ["stage"]
+    branches: ["stagex"]
 
 env:
   TEXT: "Carlos Chacon"
