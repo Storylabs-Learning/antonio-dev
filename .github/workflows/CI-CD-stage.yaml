@@ -32,6 +32,19 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+      - name: Check SonarCloud status
+        # id: sonar_status
+        run: |
+          sudo apt install jq
+          echo "SONAR_STATUS=$(curl -s -u ${{ secrets.SONAR_TOKEN }}: 'https://sonarcloud.io/api/qualitygates/project_status?projectKey=Storylabs-Learning_antonio-dev' | jq -r '.projectStatus.status')" >> $GITHUB_ENV
+      
+      - name: Sonar Status
+        run: echo ${{ env.SONAR_STATUS }}
+  
+      - name: Stop if SonarCloud test failed
+        if: ${{ env.SONAR_STATUS }} == 'ERROR'
+        run: exit 1
+
       #- name: Get TAG version
       #  run: echo "RELEASE_VERSION=$(git tag  --sort=-creatordate | head -1)" >> $GITHUB_ENV
 
