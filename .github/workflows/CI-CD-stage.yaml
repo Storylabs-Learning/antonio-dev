@@ -34,7 +34,9 @@ jobs:
 
       - name: Check SonarCloud status
         id: sonar_status
-        run: echo "::set-output name=status::$(curl -s -u ${{ secrets.SONAR_TOKEN }}: 'https://sonarcloud.io/api/qualitygates/project_status?projectKey=antonio-dev' | jq -r '.projectStatus.status')"
+        run: |
+          sudo apt install jq
+          echo "::set-output name=status::$(curl -s -u ${{ secrets.SONAR_TOKEN }}: 'https://sonarcloud.io/api/qualitygates/project_status?projectKey=antonio-dev' | jq -r '.projectStatus.status')"
 
       - name: Stop if SonarCloud test failed
         if: steps.sonar_status.outputs.status == 'ERROR'
