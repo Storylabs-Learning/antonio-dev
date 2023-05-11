@@ -32,6 +32,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+      - name: Check SonarCloud status
+        id: sonar_status
+        run: echo "::set-output name=status::$(curl -s -u ${{ secrets.SONAR_TOKEN }}: 'https://sonarcloud.io/api/qualitygates/project_status?projectKey=antonio-dev' | jq -r '.projectStatus.status')"
+
+      - name: Stop if SonarCloud test failed
+        if: steps.sonar_status.outputs.status == 'ERROR'
+        run: exit 1
+
       #- name: Get TAG version
       #  run: echo "RELEASE_VERSION=$(git tag  --sort=-creatordate | head -1)" >> $GITHUB_ENV
 
