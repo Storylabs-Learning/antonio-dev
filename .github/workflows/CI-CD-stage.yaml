@@ -33,6 +33,10 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 
+      - name: Check Scan
+        run: echo "SONAR_STATUS=$(curl  --header 'Authorization: Bearer ${{ SONAR_TOKEN}}' https://sonarcloud.io/api/qualitygates/project_status\?projectKey\=${{ PROJECT_KEY }} | jq -r '.projectStatus.status')" >> $GITHUB_ENV
+        
+
       #- name: Get TAG version
       #  run: echo "RELEASE_VERSION=$(git tag  --sort=-creatordate | head -1)" >> $GITHUB_ENV
 
