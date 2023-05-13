@@ -35,8 +35,8 @@ jobs:
 
       - name: Check Scan
         run: |
-          
-          echo "SONAR_STATUS=$(curl  --header 'Authorization: Bearer ${{ SONAR_TOKEN}}' https://sonarcloud.io/api/qualitygates/project_status\?projectKey\=${{ PROJECT_KEY }} | jq -r '.projectStatus.status')" >> $GITHUB_ENV
+
+          echo "SONAR_STATUS=$(curl  --header 'Authorization: Bearer ${{ secrets.SONAR_TOKEN}}' https://sonarcloud.io/api/qualitygates/project_status\?projectKey\=${{ secrets.PROJECT_KEY }} | jq -r '.projectStatus.status')" >> $GITHUB_ENV
         
 
       #- name: Get TAG version
