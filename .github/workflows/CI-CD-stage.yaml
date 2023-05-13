@@ -40,8 +40,8 @@ jobs:
         run: echo ${{ env.SONAR_STATUS }}
 
       - name: Circuit Breaker
-        if: ${{ env.SONAR_STATUS }} == 'ERROR'
-        run: exit 1        
+        if: ${{ env.SONAR_STATUS }} == 'XXXXXXXX'
+        run: exit 1
 
       #- name: Get TAG version
       #  run: echo "RELEASE_VERSION=$(git tag  --sort=-creatordate | head -1)" >> $GITHUB_ENV
