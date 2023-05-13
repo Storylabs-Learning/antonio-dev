@@ -101,7 +101,15 @@ try {
 
 var regex = /^(a+)+$/;
 
-
+var regex2 = /^(a+)+$/;
+try {
+  // Some code that may throw an exception
+} catch (error) {
+  // Empty catch block
+}
+function multiplyx(a, b) {
+  return a * b;
+}
 
 
 
