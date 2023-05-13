@@ -85,23 +85,5 @@ app.listen(3080, () => {
   logger.info(`/healthcheck on port 3080`)
 })
 
-var unusedVariable = 42;
-
-function multiply(a, b) {
-  return a * b;
-}
-
-multiply(2); // Missing the second argument
-
-try {
-  // Some code that may throw an exception
-} catch (error) {
-  // Empty catch block
-}
-
-var regex = /^(a+)+$/;
-
-
-
 
 
